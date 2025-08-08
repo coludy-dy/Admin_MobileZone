@@ -1,0 +1,8 @@
+body {
+  background: var(--primary-color);
+}
+.admin-header h1 {
+  font-size: 20px;
+  color:green;
+  letter-spacing: 0.5px;
+}
