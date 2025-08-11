@@ -55,6 +55,7 @@ class OrderController extends Controller
     public function viewDetail(Order $order)
     {
         $order = Order::with(['user','orderItems.product'])->first();
+        dd($order->id);
         return view('orders.detail',compact('order'));
     }
 

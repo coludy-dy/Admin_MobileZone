@@ -12,7 +12,7 @@
 
     <div class="d-flex justify-content-center">
         <div class="card shadow-lg border-0 rounded-4 col-md-8">
-            <div class="card-header bg-primary text-white rounded-top-4">
+            <div class="card-header  text-black rounded-top-4">
                 <h5 class="mb-0"><i class="bi bi-person-lines-fill me-2"></i>User Information</h5>
             </div>
 
@@ -39,7 +39,7 @@
                             @if(!empty($user->created_at))
                             <tr>
                                 <th>Registered At</th>
-                                <td>{{ $user->created_at->format('d M Y, H:i A') }}</td>
+                                <td>{{ $user->created_at->format('d-m-Y') }}</td>
                             </tr>
                             @endif
                         </tbody>
