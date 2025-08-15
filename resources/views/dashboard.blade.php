@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['active' => 'dashboard'])
 
 @section('content')
     <div class="row g-4 justify-content-center">

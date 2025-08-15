@@ -9,6 +9,6 @@ Route::prefix('brand')->name('brand.')->group(function(){
     Route::post('store',[BrandController::class,'store'])->name('store');
     Route::get('edit/{brand}', [BrandController::class, 'edit'])->name('edit');
     Route::post('update/{brand}',[BrandController::class,'update'])->name('update');
-    Route::delete('destroy/{product}', [BrandController::class, 'destroy'])->name('destroy');
+    Route::delete('destroy/{brand}', [BrandController::class, 'destroy'])->name('destroy');
 
 });

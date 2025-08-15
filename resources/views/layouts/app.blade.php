@@ -16,7 +16,7 @@
             left: 0;
             height: 100vh;
             width: 250px;
-            background-color: #2e4e42;
+            background-color: #198754;
             color: white;
             z-index: 1030; /* higher than navbar default */
         }

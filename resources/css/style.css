@@ -6,3 +6,36 @@ body {
   color:green;
   letter-spacing: 0.5px;
 }
+/* Remove Bootstrap link focus/active background */
+.sidebar .nav-link:focus,
+.sidebar .nav-link:active {
+    background-color: inherit !important; /* keep original color */
+    color: inherit !important;           /* keep original text color */
+    box-shadow: none !important;         /* remove focus outline */
+}
+
+/* Optional: remove the dotted outline when clicking */
+.sidebar .nav-link:focus-visible {
+    outline: none !important;
+}
+.notification-btn {
+        position: relative;
+        background: none;
+        border: none;
+        color: #333;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: background 0.2s ease;
+    }
+    .notification-btn:hover {
+        background: rgba(0, 0, 0, 0.05);
+    }
+    .notification-badge {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 0.75rem;
+        padding: 0.4em 0.4em;
+    }

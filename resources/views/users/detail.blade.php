@@ -5,14 +5,12 @@
 @section('content')
 <div class="container">
     <div class="d-flex justify-content-end mb-3">
-        <a href="{{ route('user.index') }}" class="btn btn-sm btn-primary shadow-sm">
-            <i class="bi bi-arrow-left"></i> Back
-        </a>
+        <a href="{{ route('user.index') }}" class="btn  btn-success shadow-sm"><i class="fa-solid fa-arrow-left me-1"></i>Back</a>
     </div>
 
     <div class="d-flex justify-content-center">
         <div class="card shadow-lg border-0 rounded-4 col-md-8">
-            <div class="card-header  text-black rounded-top-4">
+            <div class="card-header bg-success  text-white rounded-top-4">
                 <h5 class="mb-0"><i class="bi bi-person-lines-fill me-2"></i>User Information</h5>
             </div>
 

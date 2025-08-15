@@ -13,32 +13,35 @@ class OrderController extends Controller
     {
         $status = self::orderStatus();
 
-        $orders = Order::with(['user','admin'])
-                    ->when($request->customer_name,function($q) use($request){
-                        $q->whereHas('user', function($sub) use($request) {
-                            return $sub->where('name',$request->customer_name);
-                        });
-                    })
-                    ->when($request->product_name, function($q) use($request) {
-                        $q->whereHas('product',function($sub) use($request) {
-                            return $sub->where('name',$request->product_name);
-                        });
-                    })
-                    ->when($request->quantity, function($query) use($request) {
-                        $query->where('quantity',$request->quantity);
-                    })
-                    ->when($request->status, function($query) use($request) {
-                        $query->where('status',$request->status);
-                    })
-                    ->when($request->created_at, function($query) use($request) {
-                        $query->where('created_at','like','%'.$request->created_at.'%');
-                    })
-                    ->when($request->complete_date, function($query) use($request) {
-                        $query->where('complete_date','like','%'.$request->complete_date.'%');
-                    })
-                    ->paginate(10)
-                    ->withQueryString();
-                    
+                $orders = Order::with(['user','admin','orderItems.product'])
+                        ->when($request->customer_name, function($q) use($request) {
+                            $q->whereHas('user', function($sub) use($request) {
+                                $sub->where('name', 'like', '%' . $request->customer_name . '%');
+                            });
+                        })
+                        ->when($request->product_name, function($q) use($request) {
+                            $q->whereHas('orderItems.product', function($sub) use($request) {
+                                $sub->where('name', 'like', '%' . $request->product_name . '%');
+                            });
+                        })
+                        ->when($request->quantity, function($q) use($request) {
+                            $q->whereHas('orderItems', function($sub) use($request) {
+                                $sub->where('quantity', $request->quantity);
+                            });
+                        })
+                        ->when($request->status, function($q) use($request) {
+                            $q->where('status', $request->status);
+                        })
+                        ->when($request->created_at, function($q) use($request) {
+                            $q->whereDate('created_at', $request->created_at);
+                        })
+                        ->when($request->complete_date, function($q) use($request) {
+                            $q->whereDate('complete_date', $request->complete_date);
+                        })
+                        ->paginate(10)
+                        ->withQueryString();
+
+
         return view('orders.index',compact('orders','status'));
     }
      public function destroy(Order $order)
@@ -52,11 +55,13 @@ class OrderController extends Controller
         return redirect()->route('order.index')->with('success', 'Order deleted successfully!');
     }
 
-    public function viewDetail(Order $order)
-    {
-        $order = Order::with(['user','orderItems.product'])->first();
-        dd($order->id);
-        return view('orders.detail',compact('order'));
-    }
+   public function viewDetail(Order $order)
+{
+    // Eager-load related user and products
+    $order->load(['user', 'orderItems.product']);
+
+    return view('orders.detail', compact('order'));
+}
+
 
 }

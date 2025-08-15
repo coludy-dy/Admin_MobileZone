@@ -8,11 +8,4 @@
             <li><a href="{{route('order.index')}}" class="nav-link {{$active == 'order' ? 'active' : ''}}" >Order</a></li>
             <li><a href="{{route('user.index')}}" class="nav-link {{$active == 'user' ? 'active' : ''}}">Customer</a></li>
         </ul>
-        {{-- <hr>
-        <h6 class="text-uppercase text-white-50">Apps</h6>
-        <ul class="nav flex-column">
-            <li><a href="#" class="nav-link">Calendar</a></li>
-            <li><a href="#" class="nav-link">Chat</a></li>
-            <li><a href="#" class="nav-link">Email</a></li>
-        </ul> --}}
     </div>

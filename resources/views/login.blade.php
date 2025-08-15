@@ -13,7 +13,7 @@
         <div class="col-md-6 ">
             <div class="card" style="margin-top:35%">
                 <div class="text-center mt-4 mb-2">
-                    <img src="{{ asset('storage/img/mobile-logo.png') }}" alt="img" width="150px">
+                    <img src="{{ asset('public/img/mobile-logo.png') }}" alt="img" width="150px">
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
